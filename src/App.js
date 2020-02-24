@@ -23,6 +23,7 @@ function App() {
 
   const appName = 'LFGS'
   const slogan = 'Lightening Fast Gif Searches'
+  const author = 'huntCodes'
 
   //calls
 
@@ -58,8 +59,8 @@ function App() {
         <Container>
           <Row className='mt-3'>
             <Col>
-            <h1 style={{ fontWeight: 'bold' }}>{appName.split('').map((l, i) => <span key={l} id={`l${i}`}>{l}</span>)} <span role="img" aria-label='emoji'>😎</span></h1>
-              <p className='mt-3' style={{ fontWeight: 'bold' }}>{slogan.split(' ').map((w, i) => <span key={w} id={`l${i}`}> {w} </span>)}</p>
+            <h1 style={{ fontWeight: 'bold' }}>{appName.split('').map((l, i) => <span key={l} className={`l${i}`}>{l}</span>)} <span role="img" aria-label='emoji'>😎</span></h1>
+              <p className='mt-3' style={{ fontWeight: 'bold' }}>{slogan.split(' ').map((w, i) => <span key={w} className={`l${i}`}> {w} </span>)}</p>
             </Col>
             <Col>
               <Form className='mt-2' style={{ maxWidth: '400px', margin: 'left' }} onSubmit={e => {
@@ -90,7 +91,7 @@ function App() {
                   gif.list.map((g, i) =>
                   <Row>
                   <Col>
-                    <Card key={g.id} id={`cd${i}`} style={{ maxWidth: '800px', height: 'auto', margin: 'auto' }}>
+                    <Card key={g.id} className={`c${i}`} style={{ maxWidth: '800px', height: 'auto', margin: 'auto' }}>
                       <CardImg src={g.images.downsized.url} alt="giphy" />
                     </Card>
                    </Col>
@@ -100,6 +101,9 @@ function App() {
             </Col>
           </Row>
         </Container>
+          <footer style={{ marginTop: '50px', textAlign: 'center' }}>
+            <h4 style={{ display: 'inline-block' }}>{author.split('').map((l, i)=> <span num={i} className={`l${i}`}>{l}</span>)} © {new Date().getFullYear()}</h4><p>Built with React, Styled Components</p>
+          </footer>
       </MainWrapper>
     </div>
   );

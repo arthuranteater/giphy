@@ -133,30 +133,47 @@ button {
         color: ${props => props.comp()};
     }
 }
-#l0 {
+
+.l0 {
 color: ${props => props.main};
 }
-#l1 {
+.l1 {
 color: ${props => props.comp()}; 
 }
-#l2 {
+.l2 {
 color: ${props => props.lprimary()}; 
 }
-#l3 {
+.l3 {
 color: ${props => props.lcomp()}; 
 }
-#cd0 {
+.l4 {
+color: ${props => props.lprimary()}; 
+}
+.l5 {
+color: ${props => props.lcomp()}; 
+}
+.l6 {
+color: ${props => props.lprimary()}; 
+}
+.l7 {
+color: ${props => props.lcomp()}; 
+}
+.l8 {
+color: ${props => props.lprimary()}; 
+}
+
+.c0 {
     border: 20px solid ${props => props.main};
 }
-#cd1 {
+.c1 {
     border: 20px solid ${props => props.comp()};
 }
-#cd2 {
+.c2 {
     border: 20px solid ${props => props.third};
 }
-#cd3 {
-    border: 20px solid ${ props => props.lcomp()};
+.c3 {
+    border: 20px solid ${props => props.lcomp()};
 }
-#cd4 {
-    border: 20px solid ${ getRandomColor()};
+.c4 {
+    border: 20px solid ${ props => getRandomColor()};
 }`
