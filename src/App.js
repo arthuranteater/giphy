@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { MainWrapper, Logo } from './styles'
+import { MainWrapper } from './styles'
 import {
   CardImg, Card, Button, Form, FormGroup, Input, Container,
   Row, Col
@@ -21,7 +21,7 @@ function App() {
 
   //vars
 
-  const appName = 'LFGS 😎'
+  const appName = 'LFGS'
   const slogan = 'Lightening Fast Gif Searches'
 
   //calls
@@ -56,16 +56,13 @@ function App() {
     <div className="App">
       <MainWrapper change={change ? 'yes' : ''}>
         <Container>
-          <Row>
+          <Row className='mt-3'>
             <Col>
-
-              <h1 className='m-3' style={{ fontWeight: 'bold' }}>{appName.split('').map((letter, i) =>
-                <Logo key={letter} random>{letter}</Logo>)}</h1>
-                <p>{slogan.split(' ').map((word, i) =>
-                <Logo key={word} random> {word} </Logo>)}</p>
+            <h1 style={{ fontWeight: 'bold' }}>{appName.split('').map((l, i) => <span key={l} id={`l${i}`}>{l}</span>)} <span role="img" aria-label='emoji'>😎</span></h1>
+              <p className='mt-3' style={{ fontWeight: 'bold' }}>{slogan.split(' ').map((w, i) => <span key={w} id={`l${i}`}> {w} </span>)}</p>
             </Col>
             <Col>
-              <Form className='mt-3' style={{ maxWidth: '400px', margin: 'left' }} onSubmit={e => {
+              <Form className='mt-2' style={{ maxWidth: '400px', margin: 'left' }} onSubmit={e => {
                 e.preventDefault()
                 setSearch(input)
                 changeColors(!change)
@@ -77,20 +74,27 @@ function App() {
                 <Button type='submit'>{status === '' ? (input === '' ? 'Get Random Giphy' : 'Search') : 'Searching'}</Button>
               </Form>
             </Col>
-
           </Row>
           <Row>
             <Col>
               <div className='mt-5'>
-                {status === 'loading' ? <div></div> : (random ?
-                  <Card id='cd0' style={{ width: '800px', height: 'auto', margin: 'auto' }}>
+                {status === 'loading' ? <></> : (random ?
+                <Row>
+                <Col>
+                  <Card id='cd0' style={{ maxWidth: '800px', height: 'auto', margin: 'auto' }}>
                     <CardImg src={gif.random.images.downsized.url} alt="giphy" />
                   </Card>
+                  </Col>
+                  </Row>
                   : (gif.list.length === 0 ? <h2 className='text-danger'>No matches</h2> :
                   gif.list.map((g, i) =>
-                    <Card key={g.id} id={`cd${i}`} style={{ width: '800px', height: 'auto', margin: 'auto' }}>
+                  <Row>
+                  <Col>
+                    <Card key={g.id} id={`cd${i}`} style={{ maxWidth: '800px', height: 'auto', margin: 'auto' }}>
                       <CardImg src={g.images.downsized.url} alt="giphy" />
-                    </Card>)
+                    </Card>
+                   </Col>
+                </Row>)
                   ))}
               </div>
             </Col>

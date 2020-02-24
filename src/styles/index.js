@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Card } from 'reactstrap'
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -30,19 +29,19 @@ function hexToComplimentary(hex) {
     var min = Math.min(r, g, b);
     var h, s, l = (max + min) / 2.0;
 
-    if (max == min) {
+    if (max === min) {
         h = s = 0;  //achromatic
     } else {
         var d = max - min;
         s = (l > 0.5 ? d / (2.0 - max - min) : d / (max + min));
 
-        if (max == r && g >= b) {
+        if (max === r && g >= b) {
             h = 1.0472 * (g - b) / d;
-        } else if (max == r && g < b) {
+        } else if (max === r && g < b) {
             h = 1.0472 * (g - b) / d + 6.2832;
-        } else if (max == g) {
+        } else if (max === g) {
             h = 1.0472 * (b - r) / d + 2.0944;
-        } else if (max == b) {
+        } else if (max === b) {
             h = 1.0472 * (r - g) / d + 4.1888;
         }
     }
@@ -94,8 +93,15 @@ export const MainWrapper = styled.div.attrs(props => ({
     // or we can define dynamic ones
     comp: function () {
         return hexToComplimentary(this.main)
+    },
+    third:'',
+    lprimary: function () {
+        this.third = getRandomColor()
+        return this.third
+    },
+    lcomp: function () {
+        return hexToComplimentary(this.third)
     }
-    // comp: props.change === 'yes' ? hexToComplimentary(props.main) : hexToComplimentary(props.main)
 }))`
 h2 {
     color: ${props => props.main};
@@ -123,31 +129,34 @@ button {
         border: 4px solid ${ props => props.main};
         box-shadow: none;
     }
+    ::placeholder {
+        color: ${props => props.comp()};
+    }
+}
+#l0 {
+color: ${props => props.main};
+}
+#l1 {
+color: ${props => props.comp()}; 
+}
+#l2 {
+color: ${props => props.lprimary()}; 
+}
+#l3 {
+color: ${props => props.lcomp()}; 
 }
 #cd0 {
-    border: 20px solid ${ props => props.main};
+    border: 20px solid ${props => props.main};
 }
 #cd1 {
-    border: 20px solid ${ getRandomColor()};
+    border: 20px solid ${props => props.comp()};
 }
 #cd2 {
-    border: 20px solid ${ getRandomColor()};
+    border: 20px solid ${props => props.third};
 }
 #cd3 {
-    border: 20px solid ${ getRandomColor()};
+    border: 20px solid ${ props => props.lcomp()};
 }
 #cd4 {
     border: 20px solid ${ getRandomColor()};
-}
-
-`
-
-export const Logo = styled.span.attrs(props => ({
-    main: props.num ? getRandomColor() : getRandomColor(),
-    comp: function () {
-        return hexToComplimentary(this.main)
-    }
-}))`
-color: ${props => props.num % 2 === 0 ? props.comp() : props.main};
-font-family: 'Notable', ;
-`
+}`
