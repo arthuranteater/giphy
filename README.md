@@ -1,3 +1,9 @@
+## Lightening Fast Giphy Search
+
+This project utilizes a third-party api to search for gifs. It was built with create-react-app and styled-components.
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
