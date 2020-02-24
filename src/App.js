@@ -82,7 +82,7 @@ function App() {
                 {status === 'loading' ? <></> : (random ?
                 <Row>
                 <Col>
-                  <Card id='cd0' style={{ maxWidth: '800px', height: 'auto', margin: 'auto' }}>
+                  <Card className='c0' style={{ maxWidth: '800px', height: 'auto', margin: 'auto' }}>
                     <CardImg src={gif.random.images.downsized.url} alt="giphy" />
                   </Card>
                   </Col>
